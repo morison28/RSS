@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method='POST'>{% csrf_token %}
+    <input type="text" name="url" placeholder="RSSフィードを入力">
+    <input type="submit" value="追加">
+</form>
+{% endblock content %}

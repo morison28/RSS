@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert alert-primary" role="alert">
+    <h2>登録サイト一覧</h2>
+    <ul>
+        {% for object in objects %}
+        <li><a href="{% url 'rss_app:feed' param=object.feed_url_str %}">{{ object.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

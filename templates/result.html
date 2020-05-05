@@ -1,0 +1,6 @@
+<p><a href="{% url 'rss_app:search'%}">検索画面に戻る</a></p>
+<h1>検索結果</h1>
+{% for entry in entries %}
+<p>{{ entry.title }}</p>
+{%endfor%}
+

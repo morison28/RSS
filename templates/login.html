@@ -1,0 +1,9 @@
+<h1>login page</h1>
+
+<form action="" method="POST">{% csrf_token %}
+    <label for="inputEmail">ユーザー名(メールアドレス)</label>
+    <input type="text" id="inputEmail" class="form-control" name='email' placeholder="email address" required autofocus>
+    <label for="inputPassword">パスワード</label>
+    <input type="password" name='password' placeholder="password" required>
+    <button type="submit">ログイン</button>
+</form>

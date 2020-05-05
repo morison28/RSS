@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block indivisuals%}
+<ul>
+    {% for ent in entry %}
+        <li>
+            <a href="{{ ent.link }}">{{ ent.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock indivisuals %}
+{% block content %}
+<div class="container">
+    <h1>Home</h1>
+    <p>{{ username }}でログイン中</p>
+    <h2>{{ u }}</h2>
+    {% for object in objects %}
+    <p>{{object.feed_url}}</p>
+    {% endfor %}
+    <!-- <p>{{entries_lst}}</p> -->
+    {% for entry in entries_lst %}
+    <div class="alert alert-info" role="alert">
+        <h3>メディア</h3>
+        {% for ent in entry %}
+        <p><a href="{{ ent.link }}">{{ ent.title }}</a></p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

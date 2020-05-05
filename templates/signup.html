@@ -1,0 +1,15 @@
+<h1>signup page</h1>
+
+{% block content %}
+<form action="" method="POST">{% csrf_token %}
+    {% if error %}
+    <p style="color: red">＊{{ error }}</p>
+    {% endif%}
+    <label for="
+    <label for="inputEmail">ユーザー名(メールアドレス)</label>
+    <input type="text" id="inputEmail" class="form-control" name='email' placeholder="email address" required autofocus>
+    <label for="inputPassword">パスワード</label>
+    <input type="password" name='password' placeholder="password" required>
+    <button type="submit">ログイン</button>
+</form>
+{% endblock content %}
