@@ -3,7 +3,7 @@
 {% for entry in entries %}
 <div class="container" style="border-bottom: solid 1px gray">{% csrf_token %}
         {% if entry.title in users_favorite_list %}
-        <a href="{% url 'rss_app:delete_favorite' %}" role="button" style="color: yellow;   -webkit-text-stroke: 1px gray;">★</a> 
+        <a href="{% url 'rss_app:delete_favorite' prm=entry.title param=entry.link %}" role="button" style="color: yellow;   -webkit-text-stroke: 1px gray;">★</a> 
         {% else %}
         <a href="{% url 'rss_app:add_favorite' prm=entry.title param=entry.link %}" role="button" style="color: white;   -webkit-text-stroke: 1px gray;">★</a>
         {% endif %}

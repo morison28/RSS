@@ -20,7 +20,7 @@ urlpatterns = [
     path('all_articles/', views.all_articles_view, name='all_articles'),
     path('favorite/', views.favorite_view, name='favorite'), # お気に入り記事は別のデータベースで作成し、Userごとのページをこしらえる必要がある
     path('add_favorite/<path:param>/<path:prm>', views.add_favorite, name='add_favorite'),
-    path('delete_favorite/', views.delete_favorite, name='delete_favorite')
+    path('delete_favorite/<path:param>/<path:prm>', views.delete_favorite, name='delete_favorite')
 
 
 ]

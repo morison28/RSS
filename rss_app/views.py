@@ -192,7 +192,16 @@ def add_favorite(request, prm, param):
     }
     return  HttpResponse(d)#render(request, 'favorite.html')#redirect('dashboard')#JsonResponse(d)#HttpResponse('') #redirect(request.META['HTTP_REFERER'])#reverse('feed') 
 
-def delete_favorite(request):
+def delete_favorite(request,prm,param):
+    Favorite.objects.filter(user=request.user).get(favorite_article_title=prm).delete()
+    """
+    print('デリートが呼び出された')
+    users_favorite_queryset = Favorite.objects.filter(user=request.user)
+    print(users_favorite_queryset)
+    print(type(users_favorite_queryset))
+    print('データ確認', users_favorite_queryset.get(favorite_article_title=prm))
+    print(type(users_favorite_queryset.get(favorite_article_title=prm)))
+    """
     return HttpResponse('delete')
 
 def favorite_view(request):
