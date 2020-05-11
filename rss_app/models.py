@@ -35,8 +35,7 @@ class UserManager(UserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
-    ・
-    ・持ってるフィールドをいくつかけしたり、大きな変更が必要な場合はAbstractBaseUserを継承
+    持ってるフィールドをいくつかけしたり、大きな変更が必要な場合はAbstractBaseUserを継承
     usernameフィールドをなくし、emailフィールドをメインに扱うモデルを作成する
     """
 
@@ -45,7 +44,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
     
-    # 必要？
     ## first_name = models.CharField(_('first name'), max_length=30, blank=True)
     ## last_name = models.CharField(_('last name'), max_length=150, blank=True)
 
@@ -98,7 +96,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def username(self):
         """username属性のゲッター
-
         他アプリケーションが、username属性にアクセスした場合に備えて定義
         メールアドレスを返す
         """
@@ -108,30 +105,16 @@ class Feed(models.Model):
     user_id = models.IntegerField()
     feed_url = models.URLField()
     feed_url_str = models.CharField(max_length=200)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     def __str__(self):
         return self.feed_url
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    favorite_article_title = models.CharField(max_length=100)
+    favorite_article_title = models.CharField(max_length=200)
     favorite_article_url = models.URLField()
+    #site_title = model..CharField(max_length=200)
 
     def __str__(self):
         return self.favorite_article_title
         
-"""
-def signupfunc(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        try:
-            User.objects.get(email=email)
-            return render(request, 'signup.html', {'error': 'このユーザーは登録されています'})
-        except:
-            # user登録ができたらログインページ移行する
-            user = User.objects.create_user(email=email, password=password)
-            return render(request, 'login.html')
-            
-    return render(request, 'signup.html')
-"""

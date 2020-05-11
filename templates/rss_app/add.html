@@ -1,8 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'rss_app/base.html' %}
 
 {% block content %}
 <form action="" method='POST'>{% csrf_token %}
+    <p>RSSフィードのURLを入力してください</p>
     <input type="text" name="url" placeholder="RSSフィードを登録">
     <input type="submit" value="追加">
+    {%if message %}
+    <p style="color: red" >{{ message }}</p>
+    {% endif %}
 </form>
 {% endblock content %}
