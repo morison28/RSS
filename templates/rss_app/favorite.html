@@ -1,0 +1,26 @@
+{% extends 'rss_app/base.html' %}
+
+{% block content %}
+
+{% for fav in favorite %}
+<div class="container" style="border-bottom: solid 1px gray">
+    <a role="button" onclick="delete_archive(event, 'fav.favorite_article_url', '{{fav.favorite_article_title}}')" href="">消去</a>
+    <a href="{{ fav.favorite_article_url }}" style="color: black; font-weight: 550">{{fav.favorite_article_title}}</a>
+</div>
+{% endfor %}
+{% endblock content %}
+
+{% block extrascript%}
+<script>
+    console.log('DEBUG');
+    function delete_archive(event, article_url, article_title){
+        // ajax
+        var xhr = new XMLHttpRequest();
+        console.log(article_url);
+        xhr.open('POST', '/delete_favorite/' + article_url + '/' + article_title);
+        xhr.setRequestHeader("X-CSRFToken", Cookies.get('csrftoken'));
+        xhr.send(); 
+
+    }
+</script>
+{% endblock extrascript %}
